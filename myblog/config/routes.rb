@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   resources :posts do
     resources :comments, only: [:create, :destroy]
+    get 'likes', to: 'posts#like'
   end
 
   root 'posts#index'

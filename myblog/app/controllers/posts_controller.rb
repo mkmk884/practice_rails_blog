@@ -44,6 +44,16 @@ class PostsController < ApplicationController
     redirect_to posts_path
   end
 
+  def like
+    @post = Post.find(params[:post_id])
+    @post.like += 1
+    if @post.save
+      redirect_to post_path(@post)
+    else
+
+    end
+  end
+
   private
     def post_params
       params.require(:post).permit(:title, :body)
