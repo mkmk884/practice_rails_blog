@@ -1,3 +1,4 @@
+<p><%= image_tag 'top.jpg', class: 'top-img' %></p>
 <h2>
   <%= link_to 'Add New', new_post_path, class: 'header-menu' %>
   My Posts
@@ -13,7 +14,6 @@
         method: :delete,
         class: 'command',
         data: { confirm: 'Sure?' } %>
-      <!-- <%= post.title %> -->
     </li>
   <% end %>
 </ul>
