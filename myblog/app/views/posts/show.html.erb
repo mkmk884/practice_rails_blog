@@ -1,11 +1,24 @@
 <h2><%= @post.title %></h2>
 <p><%= simple_format @post.body %></p>
+
+<h3>Categories</h3>
+<% if @post.post_to_categories.any? %>
+<ul>
+  <% @post.post_to_categories.each do |post_to_category| %>
+  <li>
+    <%= post_to_category.category.category %>
+  </li>
+  <% end %>
+</ul>
+<% else %>
+<p>None</p>
+<% end %>
+
+<h3>Favorite</h3>
+<%= @post.like %>
 <%= link_to '[<3]',
   post_likes_path(@post),
   method: :get %>
-
-<h3>いいねぇ</h3>
-<%= @post.like %>
 
 <h3>Comments</h3>
 <% if @post.comments.any? %>

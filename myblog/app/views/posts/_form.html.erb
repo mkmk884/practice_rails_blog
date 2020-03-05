@@ -11,5 +11,12 @@
   <span class="error"><%= @post.errors.messages[:body][0] %></span>
   <% end %>
 </p>
+<p>
+  <%= f.collection_check_boxes(:category_ids, @categories, :id, :category) do |tag| %>
+    <%= tag.label { tag.check_box + tag.text } %>
+  <% end %>
+  <%= link_to '[create category]',
+    new_category_path%>
+</p>
 <%= f.submit %>
 <% end %>

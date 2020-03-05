@@ -9,24 +9,21 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @categories = Category.all
   end
 
   def create
-    # render plain: params[:post].inspect
-    # save
-    # @post = Post.new(params[:post])
     @post = Post.new(post_params)
     if @post.save
-      # redirect
       redirect_to posts_path
     else
-      # render plain: @post.errors.inspect
       render 'new'
     end
   end
 
   def edit
     @post = Post.find(params[:id])
+    @categories = Category.all
   end
 
   def update
@@ -50,13 +47,12 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to post_path(@post)
     else
-
     end
   end
 
   private
     def post_params
-      params.require(:post).permit(:title, :body)
+      params.require(:post).permit(:title, :body, category_ids: [])
     end
 
 end

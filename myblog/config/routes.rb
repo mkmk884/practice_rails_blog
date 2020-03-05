@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     get 'likes', to: 'posts#like'
   end
 
+  resources :categories
+
   root 'posts#index'
 
 end
